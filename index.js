@@ -1,8 +1,8 @@
-var wsOauth = (function(){
-    async function getToken(code) {
+const wsOauth = (function(){
+    async function getToken(code,client_id, client_secret) {
         const requestBody = {
-            client_id: 114716,
-            client_secret: 'b0f13abdb3152be3d6d61962f54ed02f0adb16f2',
+            client_id: client_id,
+            client_secret: client_secret,
             code: code,
             grant_type: 'authorization_code'
         };
@@ -31,20 +31,21 @@ var wsOauth = (function(){
         console.log(activities);
     }
 
-    function init(){
-        // check if the querystirng contains a parameter with a code
-        // only execute the remainging functions if that code was found
-        const checkCode = new URLSearchParams(window.location.search).get('code');
-        if (checkCode) {
-            getToken(checkCode);
-        }
+    function init(client_id, client_secret){
+        // check  if the id and secret are provided
+        if(client_id && client_secret){
+            // check if the querystirng contains a parameter with a code
+            // only execute the remainging functions if that code was found
+            const checkCode = new URLSearchParams(window.location.search).get('code');
+            if (checkCode) {
+                getToken(checkCode, client_id, client_secret);
+            }
+        }else{ console.log('please provide a client id and secret')}
+
     }
 
-    console.log('executed');
     return {
         init: init
     }
 
 })();
-
-console.log('in the file')
