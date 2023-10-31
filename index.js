@@ -1,4 +1,4 @@
-const wsOauth = (() =>{
+const wsOauth = (function(){
     async function getToken(code) {
         const requestBody = {
             client_id: 114716,
@@ -31,7 +31,7 @@ const wsOauth = (() =>{
         console.log(activities);
     }
 
-    const init = () => {
+    function init(){
         // check if the querystirng contains a parameter with a code
         // only execute the remainging functions if that code was found
         const checkCode = new URLSearchParams(window.location.search).get('code');
@@ -41,7 +41,7 @@ const wsOauth = (() =>{
     }
 
     return {
-        init
+        init: init
     }
 
 })();
