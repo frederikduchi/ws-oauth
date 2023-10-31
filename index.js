@@ -31,6 +31,7 @@ const wsOauth = (function () {
     }
 
     async function call_endpoint(endpoint_url, token) {
+        // check strava documentation for endpoints: https://developers.strava.com/docs/reference/
         const response = await fetch(endpoint_url, {
             headers: {
                 'Authorization': 'Bearer ' + token
