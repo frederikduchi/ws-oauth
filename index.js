@@ -1,4 +1,4 @@
-const wsOauth = (function(){
+var wsOauth = (function(){
     async function getToken(code) {
         const requestBody = {
             client_id: 114716,
@@ -40,8 +40,11 @@ const wsOauth = (function(){
         }
     }
 
+    console.log('executed');
     return {
         init: init
     }
 
 })();
+
+console.log('in the file')
