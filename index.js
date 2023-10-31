@@ -5,7 +5,9 @@ const ws_oAuth = (function () {
         const checkCode = new URLSearchParams(window.location.search).get('code');
         if (checkCode) {
             // call backend service to get the token
-            const response = await fetch(backend_url);
+            const response = await fetch(backend_url, {
+                method: 'POST'
+            });
             const token = await response.json();
             return token.access_token;
         } else {
