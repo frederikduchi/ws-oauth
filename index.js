@@ -13,7 +13,7 @@ const wsOauth = (function () {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({client_id, client_secret, code, grant_type: 'authorization_code'})
+                    body: JSON.stringify({client_id, client_secret, code: checkCode, grant_type: 'authorization_code'})
                 })
                 const token = await response.json();
                 console.log(token);
